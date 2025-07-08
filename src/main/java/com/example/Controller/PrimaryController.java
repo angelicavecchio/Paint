@@ -88,7 +88,7 @@ public class PrimaryController implements Initializable{
     System.out.println("Sto aprendo il dialog");
      if(file!=null){
         try{
-        fileServices.save(canvas, file);
+        fileServices.saveFile(null, null);
 
         }catch(Exception e){
             e.printStackTrace();
@@ -125,18 +125,18 @@ public class PrimaryController implements Initializable{
         fileChooser.getExtensionFilters().add(eF);
 
         File file = fileChooser.showOpenDialog(stage);
-       try{
-        Image image = fileServices.load(file);
+      /*  try{*/
+       /* Image image =;
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         gc.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight());
-           
-       }catch(IOException e){
+           */ 
+      /*  }catch(IOException e){
         e.printStackTrace();
        }
+*/
+       // System.out.println("Sto aprendo il dialog");
 
-        System.out.println("Sto aprendo il dialog");
-
-       
+    
 
     }
 

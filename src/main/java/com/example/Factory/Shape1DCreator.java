@@ -11,8 +11,7 @@ public class Shape1DCreator implements ShapeCreator{
     public double D1_LENGTH= 80;
     public Color stroke;
 
-    public Shape1DCreator( Shape1D.TYPE_1D type, Color color, double D1_LENGTH){
-        this.D1_LENGTH = D1_LENGTH;
+    public Shape1DCreator( Shape1D.TYPE_1D type, Color color){
         this.stroke = color;
         this.type = type;
 

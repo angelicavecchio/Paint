@@ -1,5 +1,7 @@
 package com.example.Product;
 
+import com.example.Visitor.VisitorShape;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Shape;
@@ -109,4 +111,8 @@ public class ElipseShape extends Ellipse implements Shape2D {
     }
 
 
+     @Override
+    public void accept(VisitorShape v) {
+        v.visit(this);
+    }
 }

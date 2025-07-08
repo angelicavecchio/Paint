@@ -1,4 +1,6 @@
 package com.example.Product;
+import com.example.Visitor.VisitorShape;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -86,5 +88,9 @@ public class RectangleShape extends Rectangle implements Shape2D{
         return "Shape2D;RectangleShape;" + getShapeX() + ";" + getShapeY() + ";" + getStrokeColor() + ";" + getFillColor() + ";"+ getShapeWidth() + ";" +getShapeHeight();
     }
 
+     @Override
+    public void accept(VisitorShape v) {
+        v.visit(this);
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.example.Product;
 
+import com.example.Visitor.VisitorShape;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
@@ -146,6 +148,11 @@ public class SegmentShape extends Line implements Shape1D{
      */
     public String toString() {
         return "Shape1D;SegmentShape;" + getShapeX() + ";" + getShapeY() + ";" + getStrokeColor() + ";" + getLength();
+    }
+
+    @Override
+    public void accept(VisitorShape v) {
+        v.visit(this);
     }
 
     

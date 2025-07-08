@@ -1,5 +1,7 @@
 package com.example.Product;
 
+import com.example.Visitor.VisitorShape;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
@@ -25,6 +27,7 @@ public interface ShapeInterface {
     String toString();
     void setFront();
     void setBack();
+    void accept(VisitorShape v);
     Shape toJavaFxShape();
     
 
