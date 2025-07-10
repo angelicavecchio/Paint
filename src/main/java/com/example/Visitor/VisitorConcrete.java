@@ -15,7 +15,7 @@ import javafx.scene.layout.GridPane;
 
 public class VisitorConcrete implements VisitorShape{
 
-    private final String DECIMAL_REGEX = "^(\\d+\\.\\d+|\\d+|\\.\\d+)$";
+    private final String DECIMAL_REGEX = "^[0-9]+(\\\\.[0-9]+)?$";
 
     @Override
     public void visit(Shape1D shape1d) {
@@ -59,20 +59,17 @@ public class VisitorConcrete implements VisitorShape{
         confirmButton.addEventFilter(ActionEvent.ACTION, event -> {
             String length = input.getText().trim(); //prendo l'input e rimuovo eventuali spazi 
 
-            if(!length.matches(length)){
-                Alert error = new Alert(AlertType.ERROR);
-                error.setTitle("Invalid input");
-                error.setContentText("It must be a decimal positive number");
-                error.showAndWait();
-                event.consume(); //se non lo mettiamo una volta che l'utente prova a mettere l'errore e chiude la finestra dell'errore, l'utente non può corregere l'input
+          if (!length.matches(DECIMAL_REGEX)) {
+    Alert error = new Alert(AlertType.ERROR);
+    error.setTitle("Invalid input");
+    error.setContentText("It must be a decimal positive number");
+    error.showAndWait();
+    event.consume();
+} else {
+    double lengthShape = Double.parseDouble(length);
+    shape1d.setLength(lengthShape);
+}
 
-        }else{
-
-            double lengthShape = Double.parseDouble(length);
-            shape1d.setLength(lengthShape);
-
-
-        }
         dialog.showAndWait();
     });
 
@@ -130,20 +127,18 @@ public class VisitorConcrete implements VisitorShape{
            String newWidth = text1.getText().trim();
            String newHeight = text2.getText().trim();
 
-           if(!newWidth.matches(DECIMAL_REGEX) || newHeight.matches(DECIMAL_REGEX )) {
-
-            Alert error = new Alert(AlertType.ERROR);
-                error.setTitle("Invalid input");
-                error.setContentText("It must be a decimal positive number");
-                error.showAndWait();
-                event.consume(); //se non lo mettiamo una volta che l'utente prova a mettere l'errore e chiude la finestra dell'errore, l'utente non può corregere l'input
-           }else{
-            double newW = Double.parseDouble(newWidth);
-            double newH = Double.parseDouble(newHeight);
-            shape2d.setShapeHeight(newH);
-            shape2d.setShapeWidth(newW);
-
-           }
+        if (!newWidth.matches(DECIMAL_REGEX) || !newHeight.matches(DECIMAL_REGEX)) {
+    Alert error = new Alert(AlertType.ERROR);
+    error.setTitle("Invalid input");
+    error.setContentText("It must be a decimal positive number");
+    error.showAndWait();
+    event.consume();
+} else {
+    double newW = Double.parseDouble(newWidth);
+    double newH = Double.parseDouble(newHeight);
+    shape2d.setShapeHeight(newH);
+    shape2d.setShapeWidth(newW);
+}
         });
 
         dialog.showAndWait();

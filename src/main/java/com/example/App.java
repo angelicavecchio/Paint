@@ -2,9 +2,9 @@ package com.example;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-    private final String fileFxml = "/com/example/View/paint.fxml";
+    private final String fileFxml = "/com/example/View.fxml";
     private final int WIDTHSCENE = 800;
     private final int HEIGHTSCENE = 600;
 
@@ -34,7 +34,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fileFxml));
-        AnchorPane root = loader.load();
+        Parent root = loader.load();
         scene = new Scene(root,WIDTHSCENE,HEIGHTSCENE);
         stage.setScene(scene);
         stage.setTitle("Paint");
